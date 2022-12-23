@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import AboutPage from './AboutPage';
+import ContactsPage from './ContactsPage';
+import WorkPage from './WorkPage';
+import './styles.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <div >
+              <ul>
+                <li >
+                  <Link to="/about">
+                    О себе
+                  </Link>
+                </li>
+                <li >
+                  <Link to="/works">
+                    Примеры работ
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contacts">
+                    Контакты
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <Routes>
+            <Route path="/about">
+              <AboutPage />
+            </Route>
+            <Route path="/works">
+              <WorkPage />
+            </Route>
+            <Route path="/contacts">
+              <ContactsPage />
+            </Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
-
-export default App;
